@@ -11,24 +11,41 @@ import Person from "./world/person/person";
 import { Physics } from "@react-three/rapier";
 import PelotasPlaya from "./world/obstaculos/obstaculos";
 import SillaPlaya from "./world/obstaculos/SillaPlaya";
-import { CatModel } from "./world/CatModel/CatModel";
+import { CatModel } from "./world/CatModel/CatModel1";
 import { RigidBody } from 'cannon-es';
+import { CatModelProvider } from "./world/context/CatModelContext";
 
 const Experience = () => {
 
     return (
 
         <>
-            <OrbitControls
-                target={[0, 1, 0]}
-                enableZoom={true}
-                enablePan={false} 
+         {/* <Canvas
+                camera={
+                    {
+                        position: [0, 1.5, -90],
+                        
+                    }
+                }
+                shadows={true}
+            > */}
+    
+            <CatModelProvider>
+            <Canvas
+          shadows
+          camera={{
+            position: [0, 1.5, -90]
+          }}>
+              <OrbitControls
+              target={[0, 1, 0]}
                  />
+
+        
             <Suspense fallback={null}>
             <Physics debug={false} colliders="trimesh"> 
                 <Lights />
                 <Environments />
-                <Palmera position={[-2, 3.9, -105]}/>
+                {/* <Palmera position={[-2, 3.9, -105]}/>
                 <Palmera position={[-2, 3.9, -103]}/>
                 <Palmera position={[-2, 3.9, -100]}/>
                 <Palmera position={[-2, 3.9, -97]}/>
@@ -51,11 +68,12 @@ const Experience = () => {
                 <Palmera position={[2, 3.9, -97]}/>
                 <Palmera position={[2, 3.9, -100]}/>
                 <Palmera position={[2, 3.9, -103]}/>
-                <Palmera position={[2, 3.9, -105]}/>
+                <Palmera position={[2, 3.9, -105]}/> */}
+
                 <LevelJuly 
-                    position={[0, 0, -90]}
+                    // position={[0, 0, -90]}
                 />
-                        <PelotasPlaya />
+                        {/* <PelotasPlaya /> */}
                         {/* <SillaPlaya /> */}
                         <Person 
                           position={[0, -1, -75]}
@@ -68,6 +86,8 @@ const Experience = () => {
     
             </Suspense>
             
+            </Canvas>
+            </CatModelProvider>
         </>
 
         
